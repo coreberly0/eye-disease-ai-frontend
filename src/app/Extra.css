@@ -1,0 +1,70 @@
+/* Extra styles for the new result features.
+   Your globals.css is NOT changed: this file only adds new classes and
+   uses your existing color tokens (--ink-*, --amber, --teal, --alert ...). */
+
+.header-link { color: var(--paper-dim); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.header-link:hover { color: var(--amber-bright); border-color: var(--amber-dim); }
+
+.upload-tip { font-size: 12.5px; line-height: 1.55; color: var(--paper-faint); margin: 14px 2px 0; }
+.status-line { min-height: 1.4em; margin-top: 10px; font-family: var(--font-mono); font-size: 12px; color: var(--paper-dim); }
+.status-line .error-text { margin-top: 0; font-family: var(--font-body); font-size: 13px; }
+
+/* notes under the finding banner */
+.finding-note.warn { color: var(--alert); border-left: 2px solid var(--alert); padding-left: 12px; }
+.finding-note.ok { color: var(--teal); border-left: 2px solid var(--teal); padding-left: 12px; }
+
+.chip-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 2px 28px; }
+.chip-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--paper-faint); margin-right: 4px; }
+.chip { font-size: 12.5px; padding: 4px 11px; border-radius: 999px; color: var(--amber-bright); border: 1px solid var(--amber-dim); background: rgba(232,148,74,.07); }
+
+/* image area */
+.image-panel { min-width: 0; }
+.view-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; margin-bottom: 12px; }
+.view-toggle button { font-family: var(--font-body); font-size: 12.5px; font-weight: 500; padding: 7px 14px; background: transparent; border: 0; color: var(--paper-dim); cursor: pointer; }
+.view-toggle button:hover { color: var(--paper); }
+.view-toggle button.on { background: var(--ink-600); color: var(--amber-bright); }
+
+.blend { position: relative; width: 100%; max-width: 460px; aspect-ratio: 1; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); background: var(--ink-800); }
+.blend img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.heat-control { display: flex; align-items: center; gap: 14px; margin-top: 14px; max-width: 460px; font-family: var(--font-mono); font-size: 12px; color: var(--paper-dim); }
+.heat-control input { flex: 1; accent-color: var(--amber); }
+.image-help { font-size: 12.5px; line-height: 1.55; color: var(--paper-faint); margin: 12px 2px 0; max-width: 60ch; }
+
+/* condition list: longer names need more room than the original 120px column */
+.disease-row { grid-template-columns: minmax(130px, 190px) 1fr 56px; }
+.disease-name { overflow-wrap: anywhere; line-height: 1.3; }
+@media (max-width: 480px) { .disease-row { grid-template-columns: 110px 1fr 48px; } }
+.link-btn { background: none; border: 0; padding: 10px 0 8px; color: var(--amber); font-family: var(--font-body); font-size: 13px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.link-btn:hover { color: var(--amber-bright); }
+.disease-list .image-help { padding-bottom: 12px; }
+
+/* condition details card */
+.detail-card { background: var(--ink-800); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px 28px; margin-top: 24px; }
+.detail-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.detail-card h3 { margin: 0; font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--paper); }
+.detail-card h4 { margin: 20px 0 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--paper-faint); }
+.detail-card p { margin: 10px 0 0; font-size: 14.5px; line-height: 1.65; color: var(--paper-dim); max-width: 68ch; }
+.detail-card h4 + p, .detail-card h4 + ul { margin-top: 0; }
+.detail-card ul { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.75; color: var(--paper-dim); }
+
+.severity { font-family: var(--font-mono); font-size: 11.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); }
+.severity-none { color: var(--teal); border-color: rgba(92,200,186,.3); background: rgba(92,200,186,.06); }
+.severity-moderate { color: var(--amber-bright); border-color: var(--amber-dim); background: rgba(232,148,74,.07); }
+.severity-high { color: var(--alert); border-color: rgba(228,87,61,.35); background: rgba(228,87,61,.07); }
+
+/* actions */
+.action-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 26px 0 0; }
+.action-row .btn-primary { flex: none; }
+.detail-link { margin-left: auto; font-size: 13px; color: var(--paper-dim); text-decoration: none; border-bottom: 1px solid var(--line); }
+.detail-link:hover { color: var(--amber-bright); border-color: var(--amber-dim); }
+
+/* print: switch to a light page so the saved PDF is readable */
+@media print {
+  .no-print { display: none !important; }
+  :root { --ink-900:#fff; --ink-800:#fff; --ink-700:#f4f4f4; --ink-600:#e5e5e5; --ink-500:#bbb; --line:#ccc;
+          --paper:#111; --paper-dim:#333; --paper-faint:#555; --amber-bright:#8a4b0f; --amber:#b45f14; --amber-dim:#b45f14;
+          --teal:#1d7a6e; --alert:#b3261e; color-scheme: light; }
+  body { background: #fff; background-image: none; color: #111; }
+  .results { border-top: 0; padding-top: 0; }
+  .finding-label { color: #8a4b0f; }
+}
